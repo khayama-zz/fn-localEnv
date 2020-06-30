@@ -17,10 +17,6 @@ LS=$(ls -l)
 
 HOSTNAME=$(hostname)
 
-ping google.com -c 1 >> test.txt
-ping 10.0.80.11 -c 1 >> test.txt 
-PING=$(cat test.txt)
-
 echo "{ \
 \"args\": $(ARGS="$ARGS" jq -n 'env.ARGS'), \
 \"env\": $(ENV="$ENV" jq -n 'env.ENV'), \
@@ -30,6 +26,5 @@ echo "{ \
 \"dns\": $(DNS="$DNS" jq -n 'env.DNS'), \
 \"ip\": $(IP="$IP" jq -n 'env.IP'), \
 \"ls\": $(LS="$LS" jq -n 'env.LS'), \
-\"hostname\": $(HOSTNAME="$HOSTNAME" jq -n 'env.HOSTNAME'), \
-\"ping\": $(PING="$PING" jq -n 'env.PING') \
+\"hostname\": $(HOSTNAME="$HOSTNAME" jq -n 'env.HOSTNAME') \
 }"
