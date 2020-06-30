@@ -1,7 +1,7 @@
 # fn-localEnv
 
 ```
-git clone
+git clone https://github.com/khayama/fn-localEnv.git
 cd fn-localEnv
 ```
 
