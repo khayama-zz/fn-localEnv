@@ -1,4 +1,5 @@
 #!/bin/sh
+ARGS=$@
 
 ENV=$(env)
 
@@ -21,6 +22,7 @@ ping 10.0.80.11 -c 1 >> test.txt
 PING=$(cat test.txt)
 
 echo "{ \
+\"args\": $(ARGS="$ARGS" jq -n 'env.ARGS'), \
 \"env\": $(ENV="$ENV" jq -n 'env.ENV'), \
 \"cmd\": $(CMD="$CMD" jq -n 'env.CMD'), \
 \"uname\": $(UNAME="$UNAME" jq -n 'env.UNAME'), \
@@ -31,4 +33,3 @@ echo "{ \
 \"hostname\": $(HOSTNAME="$HOSTNAME" jq -n 'env.HOSTNAME'), \
 \"ping\": $(PING="$PING" jq -n 'env.PING') \
 }"
-
